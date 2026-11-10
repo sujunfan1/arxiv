@@ -1,0 +1,364 @@
+{
+  "version": 1,
+  "date": "2026-11-10",
+  "generated_at": "2026-11-10T01:35:30.470394+00:00",
+  "profile": "Social World Model",
+  "directions": {
+    "individual": "个体行为、偏好、人格、认知、心理状态及用户模拟。",
+    "interaction": "人际、人机或社会代理的对话、协商、关系、相互影响与合作。",
+    "group": "多人协作、博弈、群体决策、集体行为与观点演化。",
+    "society": "社会网络、规范、制度、社区、文化与传播的建模或模拟。"
+  },
+  "datasets": [
+    {
+      "id": "moritzrengert1/CooperationByDesign",
+      "review": {
+        "grade": "A",
+        "directions": [
+          "individual",
+          "interaction",
+          "group",
+          "society"
+        ],
+        "suitability": "usable",
+        "overview": "这是一个公开的合成LLM代理实验数据集，记录其在公共品与公共池资源博弈中的逐次决策、组—期结果、实验条件、模型变体和提示词消融。",
+        "application": "研究用途（推断）：可将逐次选择重建为代理行为轨迹，在个体层比较模型变体或实验位置的策略异质性，在交互层分析固定玩家与代理组合下的策略互动，在群体层比较VCM、SCCM、CCM及提示词消融条件下的合作、资源结果与跨期演化，并在社会层把不同资源治理机制作为制度变量开展受控模拟。原始数据直接支持这些合成代理实验；若迁移到真人用户、社会网络社区或现实制度预测，则只能作为机制假设来源，需用外部真人或社会数据验证外部效度。",
+        "reason": "数据并非仅因包含agent或simulation等关键词而被判相关，而是直接记录了LLM代理在多玩家公共品和公共池实验中的逐次选择、组—期结果、固定玩家处理、模型变体及提示词消融，因而能够直接研究代理决策差异、策略互动、群体合作与资源治理机制，达到A级。个体层结论限于合成代理，因为玩家ID是实验位置而非真人身份；社会层可支持受控制度机制研究，但不含社会网络、社区、文化或传播结构。ORS主面板还是模型变体的目的性面板而非概率样本，不能据此直接推断总体或现实人类行为。元数据显示仓库未设访问门槛，数据卡也提供公开文件清单和加载方式，因此可开展尝试。",
+        "origin": {
+          "status": "known",
+          "value": "synthetic",
+          "evidence": [
+            "card"
+          ]
+        },
+        "individual_id": {
+          "status": "known",
+          "value": "存在稳定于本发布版本的合成player ID，可用于匹配同一实验位置的记录；但这些ID是实验位置或角色索引，不是真人用户ID，也不能解释为真实个人身份。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "time_info": {
+          "status": "known",
+          "value": "group-period文件按组和实验期次组织，可用于跨期行为与群体结果分析；具体时间列名尚未由当前预览确认。发布明确排除时间戳，因此不能进行真实时间间隔、事件发生时刻或延迟分析。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "labels": {
+          "status": "known",
+          "value": "数据包含实验条件与运行清单、模型元数据、解析后的实验选择及派生博弈结果，可作为监督标签或分析变量；未说明提供人工标注、情感或主题标签。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "constraints": [
+          "玩家ID代表实验位置，数据不含人类参与者记录，不能直接支持真人个体结论。",
+          "ORS主面板是模型变体的目的性面板而非概率样本，外部效度需另行验证。",
+          "提示词、原始模型响应、推理文本、API响应标识和时间戳均未发布，难以直接审计生成过程或进行真实时序分析。",
+          "Fischer数据仅有一个推断种子和每条件四条链，必须作为探索性数据标注。",
+          "ORS清单含部分诊断条件，重建分析样本时需依据status、actual_rows和expected_rows过滤。",
+          "当前材料未展示字段级预览，具体列名、缺失模式及编码细节仍需依据数据字典核验。"
+        ],
+        "evidence": [
+          "metadata",
+          "card"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/moritzrengert1/CooperationByDesign",
+        "card": "https://huggingface.co/datasets/moritzrengert1/CooperationByDesign/blob/main/README.md"
+      },
+      "coverage_notes": [
+        "字段预览未获取（可能需申请或不支持预览）；未确认的属性标为未知。"
+      ],
+      "papers": [],
+      "fingerprint": "462221fadbb7a85d751262e53e6c51a3b2a7d70b945eec1d7bacdc495282f2f2",
+      "url": "https://huggingface.co/datasets/moritzrengert1/CooperationByDesign",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2026-08-28T10:10:06.000Z",
+      "license": "未知",
+      "gated": false
+    },
+    {
+      "id": "open-athena/sotopia-hard-harbor",
+      "review": {
+        "grade": "A",
+        "directions": [
+          "individual",
+          "interaction"
+        ],
+        "suitability": "usable",
+        "overview": "这是一个面向Harbor的100任务SOTOPIA-hard文本代理评测拆分，由20个hard环境—角色对与每个5种角色档案组合构成，并提供七维归一化评分、目标达成选项及输出字符数记录。",
+        "application": "可直接在Harbor中以固定修订版评测角色和档案条件化的代理交互，比较不同任务在七项SOTOPIA评分及目标达成上的表现，并用输出字符数分层或回归控制长度偏差。迁移到个体研究时，可在同一环境—角色对内比较不同角色档案组合，但需先确认任务与档案能够稳定对齐及是否保留完整代理输出；该数据不直接支持群体或社会网络分析。",
+        "reason": "数据卡明确将其定义为SOTOPIA-hard代理评测拆分，任务由环境—角色对和角色档案组合构成，并带有代理行为维度评分、目标达成和输出长度记录，因此能直接支持角色条件化交互及社会代理模拟，交互方向为A级。其角色档案也可用于受控的个体代理对照，但当前材料未确认稳定个体ID、完整对话或纵向轨迹，也未提供群体结构、社会网络、规范或制度数据，故个体用途有附加条件，群体与社会方向不纳入直接相关性判断。",
+        "origin": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "individual_id": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "time_info": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "labels": {
+          "status": "known",
+          "value": "默认奖励为七项归一化SOTOPIA维度的算术平均；使用适配器的--scoring-mode goal生成选项时还可记录目标达成。此外会记录被评代理的输出字符数，供下游群体层面的长度控制。材料未列出七项维度的具体名称。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "constraints": [
+          "仅含100个任务，覆盖20个环境—角色对及每个5种档案组合。",
+          "数据卡未列出七项SOTOPIA评分维度的具体名称与量表解释。",
+          "字段预览未获取，字段级完整性及代理输出、对话或轨迹是否保留需载入后核验。",
+          "未说明稳定个体ID、时间字段或纵向结构。",
+          "默认总分为七维均值，可能掩盖各维度之间的差异与权衡。",
+          "目标达成仅在以goal模式生成时可用，且输出长度仍可能影响评分。"
+        ],
+        "evidence": [
+          "metadata",
+          "card"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/open-athena/sotopia-hard-harbor",
+        "card": "https://huggingface.co/datasets/open-athena/sotopia-hard-harbor/blob/main/README.md"
+      },
+      "coverage_notes": [
+        "字段预览未获取（可能需申请或不支持预览）；未确认的属性标为未知。"
+      ],
+      "papers": [],
+      "fingerprint": "729abff35832599fa059659fd55a7eebcc38b37c16b2f6389d10b473fda232a8",
+      "url": "https://huggingface.co/datasets/open-athena/sotopia-hard-harbor",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2026-10-22T22:48:38.000Z",
+      "license": "apache-2.0",
+      "gated": false
+    },
+    {
+      "id": "electricsheepafrica/africa-eritrea-strategic-partnership-cooperation-framework-spcf-6b34208a",
+      "review": {
+        "grade": "B",
+        "directions": [
+          "society"
+        ],
+        "suitability": "usable",
+        "overview": "该数据是OCHA Eritrea发布的2019年厄立特里亚战略伙伴关系合作框架官方表格数据，共430行，包含地区、部门、机构、项目结果及资金需求和季度到账记录。",
+        "application": "推断用途：以2019年厄立特里亚为案例，描述SPCF资金需求、季度到账和累计资金在地区、部门、机构、支柱及项目结果间的分布，比较区域或部门资金缺口，并建立机构或项目层面的资源配置基线；在核验标签和数值口径后，还可训练部门、地区或资金缺口的分类与回归模型。迁移建议：先按地区和部门聚合，检查需求、到账与累计值的一致性，再以历史分配关系作为基线模拟预算情景；不得将宏观配置模式外推为个体偏好、人际互动或群体行为规律。",
+        "reason": "官方SPCF表格明确提供地区、部门、机构、支柱、结果、资金需求及季度到账等字段，能具体支撑一国制度性公共资源配置和资金缺口比较，因此属于society方向的有具体用途数据，评为B。数据仅覆盖厄立特里亚2019年的430行，没有个体行为、互动事件、关系网络或跨期行为轨迹，不能直接支持个体、交互或群体任务，也不足以评为A。元数据显示gated=false，数据卡提供CC BY 4.0许可及直接加载方式，因此可开展尝试。",
+        "origin": {
+          "status": "known",
+          "value": "real",
+          "evidence": [
+            "metadata",
+            "card"
+          ]
+        },
+        "individual_id": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "time_info": {
+          "status": "known",
+          "value": "包含year、来源起止年份和来源期间标签，以及Q1至Q4 2019资金到账、2017至2018累计资金和2017至2019累计到账字段；实质观测期为2019年，不是多期行为轨迹。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "labels": {
+          "status": "known",
+          "value": "已知提供outcome、sector、pillar、category、agency、region、country及source_sheet等分类字段；具体取值分布、标签完整性和编码一致性尚未核验。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "constraints": [
+          "仅覆盖厄立特里亚2019年一年，共430行，跨国家、跨群体和跨时间外推能力有限。",
+          "记录属于机构、项目和地区层面的汇总数据，不含个体行为、对话、关系网络或互动事件。",
+          "source_record_id仅标识表格行，不是个人ID，无法连接人物轨迹。",
+          "资金字段以期间汇总或季度列呈现，不能当作个体事件时间戳。",
+          "字段示例中有较多空值，实际缺失率、分类一致性和数值含义需加载后核验。",
+          "单一SPCF框架具有特定政策口径，迁移至其他框架或模拟情景前需验证指标定义与聚合规则。"
+        ],
+        "evidence": [
+          "metadata",
+          "card"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/electricsheepafrica/africa-eritrea-strategic-partnership-cooperation-framework-spcf-6b34208a",
+        "card": "https://huggingface.co/datasets/electricsheepafrica/africa-eritrea-strategic-partnership-cooperation-framework-spcf-6b34208a/blob/main/README.md"
+      },
+      "coverage_notes": [
+        "字段预览未获取（可能需申请或不支持预览）；未确认的属性标为未知。"
+      ],
+      "papers": [],
+      "fingerprint": "c90849c1fa643587f248449fb873018f69f8bd892dd153521b77b7b75dfcecf6",
+      "url": "https://huggingface.co/datasets/electricsheepafrica/africa-eritrea-strategic-partnership-cooperation-framework-spcf-6b34208a",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2026-08-18T20:49:15.000Z",
+      "license": "cc-by-4.0",
+      "gated": false
+    },
+    {
+      "id": "nvidia/Nemotron-Personas-UK",
+      "review": {
+        "grade": "B",
+        "directions": [
+          "individual",
+          "interaction",
+          "group",
+          "society"
+        ],
+        "suitability": "usable",
+        "overview": "Nemotron-Personas-UK 是 NVIDIA 与 Locai Labs 合作发布的合成人物数据集，包含 100 万条记录、6 类（专业/体育/艺术/旅行/烹饪/通用）自然语言 persona 描述及 10 项人口学与地理背景字段，整体分布由英格兰与威尔士 2021、Scotland 2022、北爱尔兰 2021 的人口普查数据通过概率图模型与 IPF 校准生成。",
+        "application": "可用于基于真实英国人口分布的用户模拟：为对话/智能体研究提供多样化且人口学一致的初始 persona；可作为社会模拟的人口先验（按年龄、性别、地区、家庭类型聚合）开展群体或社会层面的实验设计；也可用于以 persona 为条件的合成对话或多轮交互数据生成，从而支持人机交互研究。需在迁移时验证：合成 persona 文本是否能稳定驱动期望的个体行为与群体交互模式。",
+        "reason": "数据集直接面向 'seeding user simulations to test and evaluate AI agents'（card/metadata），且每条记录具备稳定 uuid（fields），可作为模拟个体的标识；丰富的职业、行业、地区、家庭结构等结构化属性支持按人口学切片构建同质或异质群体，进而做群体/社会层分析。属于合成数据，缺乏真实交互行为与时间维度，因此对 interaction/group/society 仅提供'种子/先验'层面支撑而不能直接分析已有交互，证据见 card 与 fields。",
+        "origin": {
+          "status": "known",
+          "value": "synthetic",
+          "evidence": [
+            "card",
+            "metadata"
+          ]
+        },
+        "individual_id": {
+          "status": "known",
+          "value": "uuid（每条记录唯一标识，可作为合成个体的稳定 ID）",
+          "evidence": [
+            "fields",
+            "sample"
+          ]
+        },
+        "time_info": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "labels": {
+          "status": "known",
+          "value": "包含 sex、age、marital_status、household_type、education_level、occupation、industry、municipality、region、country 等人口学与地理标签，并含多类 persona 文本及 skills/hobbies 列表型标注",
+          "evidence": [
+            "fields",
+            "sample"
+          ]
+        },
+        "constraints": [
+          "全部为合成数据，对应英国成人（18+）分布",
+          "无时间戳字段，不能直接做纵向行为分析",
+          "敏感属性（族裔、宗教、残疾）虽参与采样但未发布为字段",
+          "三类普查问卷口径存在差异，部分字段经粗化对齐",
+          "使用前需自行验证合成 persona 在目标研究任务中的迁移有效性"
+        ],
+        "evidence": [
+          "metadata",
+          "card",
+          "fields",
+          "sample"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK",
+        "card": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK/blob/main/README.md",
+        "fields": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK",
+        "sample": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK"
+      },
+      "coverage_notes": [
+        "数据卡超过阅读上限，仅检查开头；信息可能不完整。"
+      ],
+      "papers": [],
+      "fingerprint": "4803d84b2cc4b96fb9f3ff9e0300533afdaa7fd8dd87d11f6a7a28f911872394",
+      "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-UK",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2026-10-20T15:23:33.000Z",
+      "license": "cc-by-4.0",
+      "gated": false
+    },
+    {
+      "id": "holistic-ai/Personality_mypersonality",
+      "review": {
+        "grade": "B",
+        "directions": [
+          "individual"
+        ],
+        "suitability": "usable",
+        "overview": "该数据集包含约9,917条短文本（类似社交媒体状态更新）及其对应的大五人格（OCEAN）二元标注（y/n），分为train（7,933条）和test（1,984条），格式为parquet，公开可访问。",
+        "application": "可用于个体方向的人格建模与用户模拟任务，例如：(a) 从短文本预测大五人格特征（人格识别基准）；(b) 基于大五人格画像条件化生成社交媒体文本（人格一致性用户模拟）。需验证：标签是否在用户级别聚合（即同一用户多条文本共享相同人格画像），以及标签质量与标注一致性。",
+        "reason": "数据字段直接映射到研究档案的individual方向：'answer'字段以JSON格式提供大五人格（O/C/E/A/N）的二元标签，可作为结构化人格画像用于个体偏好、人格建模和用户模拟任务。样本表明文本为短篇社交状态（如'got a new phone for christmas'、'Happy new year :D'），适用于微调或评估人格条件下的文本生成模型。不支持interaction/group/society方向：缺少用户ID（字段列表中未见）、缺少时间戳、缺少网络/关系结构信息，且数据卡未提供社交上下文或交互过程。评级B而非C，因为人格标签是显式且结构化的，可直接用于具体建模任务；非A因为数据卡极度简略（'More Information needed'），样本仅为短文本二元标签，缺乏用户级ID、时间信息及明确的数据来源文档，限制了其作为高保真用户模拟数据的可信度。",
+        "origin": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "individual_id": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "time_info": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "labels": {
+          "status": "known",
+          "value": "'answer'字段为JSON格式的大五人格（Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism）二元标签（y/n），如'{\"O\":\"n\",\"C\":\"n\",\"E\":\"n\",\"A\":\"n\",\"N\":\"y\"}'。",
+          "evidence": [
+            "fields",
+            "sample"
+          ]
+        },
+        "constraints": [
+          "数据卡极度简略（'More Information needed'），缺乏来源、采集方式、伦理审查等说明",
+          "字段仅含text和answer，无用户ID、无时间戳、无网络关系信息",
+          "人格标签为二元（y/n）而非连续分数，信息粒度有限",
+          "原始来源与真人/合成属性未在数据卡中确认",
+          "不适用于interaction/group/society方向（缺乏交互与群体结构信息）"
+        ],
+        "evidence": [
+          "metadata",
+          "card",
+          "fields",
+          "sample"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/holistic-ai/Personality_mypersonality",
+        "card": "https://huggingface.co/datasets/holistic-ai/Personality_mypersonality/blob/main/README.md",
+        "fields": "https://huggingface.co/datasets/holistic-ai/Personality_mypersonality",
+        "sample": "https://huggingface.co/datasets/holistic-ai/Personality_mypersonality"
+      },
+      "coverage_notes": [],
+      "papers": [],
+      "fingerprint": "46b0e7b45ed72180fe7703d3de1ff9522ca42424f64c4f8eb896fcb736d23731",
+      "url": "https://huggingface.co/datasets/holistic-ai/Personality_mypersonality",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2023-08-22T04:29:07.000Z",
+      "license": "未知",
+      "gated": false
+    }
+  ],
+  "candidate_count": 530,
+  "reviewed_this_run": 5,
+  "review_failures": 5,
+  "warnings": [],
+  "limits": {
+    "review": 20,
+    "recommend": 5
+  },
+  "model_calls": 16,
+  "cache_hits": 1,
+  "usage": {
+    "input_tokens": 65372,
+    "output_tokens": 75340,
+    "total_tokens": 140712
+  }
+}
