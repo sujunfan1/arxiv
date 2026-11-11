@@ -107,3 +107,6 @@
 2026-11-10.jsonl
 2026-11-10_candidates.jsonl
 2026-11-10_research.jsonl
+2026-11-11.jsonl
+2026-11-11_candidates.jsonl
+2026-11-11_research.jsonl
