@@ -1,0 +1,366 @@
+{
+  "version": 1,
+  "date": "2026-11-12",
+  "generated_at": "2026-11-12T23:22:18.000860+00:00",
+  "profile": "Social World Model",
+  "directions": {
+    "individual": "个体行为、偏好、人格、认知、心理状态及用户模拟。",
+    "interaction": "人际、人机或社会代理的对话、协商、关系、相互影响与合作。",
+    "group": "多人协作、博弈、群体决策、集体行为与观点演化。",
+    "society": "社会网络、规范、制度、社区、文化与传播的建模或模拟。"
+  },
+  "datasets": [
+    {
+      "id": "SargeDev/jev-corpus-multi-agent-coord",
+      "review": {
+        "grade": "A",
+        "directions": [
+          "individual",
+          "interaction",
+          "group"
+        ],
+        "suitability": "usable",
+        "overview": "该数据集包含9,680条英文多智能体协调决策样本，每条记录给出状态、问题、候选项及选项上的目标概率分布。",
+        "application": "原始数据可直接作为多智能体协调决策的监督与评测基准：依据state和question预测options上的target，用于交接就绪或中止裁决、依赖与工作池状态下的协调决策，以及比较概率校准。也可将单个代理的“情境—决策”样本用于拟合情境化决策策略；迁移到真实人类协商、长期个体偏好或社会舆论演化任务前，需验证标签效度、数据来源真实性与场景覆盖。",
+        "reason": "数据卡明确说明9,680行均来自multi_agent_coord领域，每行包含状态、问题、选项和目标概率分布；样例进一步呈现代理交接裁决、worker pool空闲与依赖、关键路径、SLA及锁状态等协作情境，因此对群体协作和代理交接决策属于直接支持。交接与依赖处理提供了代理间合作用途，交互方向亦为直接支撑；个体方向只能条件性地用于单次情境化策略拟合，不能据此研究稳定个体差异。材料没有关系网络、规范制度或社区传播数据，故不支持社会方向。元数据显示gated=false且许可为Apache-2.0，公开信息足以开展尝试。",
+        "origin": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "individual_id": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "time_info": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "labels": {
+          "status": "known",
+          "value": "每行具有kind（noul、choice、score）、options、target概率分布，以及domain、family、source等类别字段；样例中target与options逐项对应。",
+          "evidence": [
+            "card",
+            "fields",
+            "sample"
+          ]
+        },
+        "constraints": [
+          "记录级id不能直接当作稳定个体或代理标识。",
+          "当前字段列表未见观测时间戳、事件顺序或纵向轨迹。",
+          "样例中的相对时长和SLA是场景参数，不能替代时间序列。",
+          "当前材料未提供真实对话、关系网络、协作结果轨迹或制度规范标签。",
+          "原始来源属性未知，目标分布的生成、标注与校准方法未说明。",
+          "当前三条样例均为agent类交接场景，其他协作结构的覆盖度需验证。"
+        ],
+        "evidence": [
+          "metadata",
+          "card",
+          "fields",
+          "sample"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/SargeDev/jev-corpus-multi-agent-coord",
+        "card": "https://huggingface.co/datasets/SargeDev/jev-corpus-multi-agent-coord/blob/main/README.md",
+        "fields": "https://huggingface.co/datasets/SargeDev/jev-corpus-multi-agent-coord",
+        "sample": "https://huggingface.co/datasets/SargeDev/jev-corpus-multi-agent-coord"
+      },
+      "coverage_notes": [],
+      "papers": [],
+      "fingerprint": "37cdbde05fa48936023f55fb1843e016eb6789234421c25ac53b935331d58d92",
+      "url": "https://huggingface.co/datasets/SargeDev/jev-corpus-multi-agent-coord",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2026-10-22T12:05:40.000Z",
+      "license": "apache-2.0",
+      "gated": false
+    },
+    {
+      "id": "rdnfn/ff-model-personality",
+      "review": {
+        "grade": "A",
+        "directions": [
+          "individual",
+          "interaction"
+        ],
+        "suitability": "usable",
+        "overview": "该数据集包含多个测试模型针对500个英文Chatbot Arena提示词生成的回复，以及按提示词和人格特质对模型与GPT-4o进行成对比较的相对标注。",
+        "application": "可将每个模型作为合成个体，使用提示词—回复—特质标注分析并汇总其相对GPT-4o呈现的人格特质，或研究真实用户提示与模型单轮回复中特质表达的关联。若用于人格模拟器校准、跨提示稳定性或真实用户行为推断，还需核验特质定义、标注一致性、重复测量和外部效度。",
+        "reason": "对individual方向为A：数据不仅提供人格相关字段，还实际包含模型回复及逐“提示词×人格特质”的成对比较标注，可直接支持对合成个体所呈现人格特质的测量与分析。对interaction方向为B：可研究真实用户提示与模型单轮回复之间的特质表达关系，但当前材料没有多轮对话、关系形成或相互适应过程。对group和society方向没有多人协作、社会网络、规范或文化传播资料。元数据显示gated=false，且数据卡列出了公开配置和文件，因此具备直接尝试条件。",
+        "origin": {
+          "status": "known",
+          "value": "mixed",
+          "evidence": [
+            "metadata",
+            "card"
+          ]
+        },
+        "individual_id": {
+          "status": "known",
+          "value": "档案未提供真实用户个体ID；测试模型按模型名称及对应回复、标注文件区分，可作为模型级合成个体标识。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "time_info": {
+          "status": "known",
+          "value": "提示词由Chatbot Arena用户于2024年6月至8月撰写；当前档案未见逐条回复或注释时间戳。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "labels": {
+          "status": "known",
+          "value": "已知存在按“提示词×人格特质”组织的成对相对标注，用于比较测试模型与GPT-4o谁更体现该特质，并处理任一方未体现的情况；v2使用Gemini-2.5-Flash标注，具体特质名称清单未在当前档案展开。",
+          "evidence": [
+            "metadata",
+            "card"
+          ]
+        },
+        "constraints": [
+          "核心标注是相对选择，而非绝对人格量表。",
+          "500个英文提示词来自2024年6月至8月Chatbot Arena用户提示的随机抽样，代表性有限。",
+          "当前档案未给出真实用户个体ID、逐条时间戳或响应时间序列。",
+          "具体特质清单、标注一致性及v1标注者信息需从版本README或文件中核验。",
+          "v2标注由Gemini-2.5-Flash生成，可能存在标注模型偏差。",
+          "模型响应受提供商条款约束，整体许可与提示词许可不同，发布前需核对。"
+        ],
+        "evidence": [
+          "metadata",
+          "card",
+          "sample"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/rdnfn/ff-model-personality",
+        "card": "https://huggingface.co/datasets/rdnfn/ff-model-personality/blob/main/README.md",
+        "fields": "https://huggingface.co/datasets/rdnfn/ff-model-personality",
+        "sample": "https://huggingface.co/datasets/rdnfn/ff-model-personality"
+      },
+      "coverage_notes": [],
+      "papers": [],
+      "fingerprint": "a81e64dadff623b0b87a9eabcfa4b7f67d11b818cb028808d42d7b7311678f0a",
+      "url": "https://huggingface.co/datasets/rdnfn/ff-model-personality",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2026-11-07T10:26:40.000Z",
+      "license": "odc-by",
+      "gated": false
+    },
+    {
+      "id": "french-open-data/entites-administratives-membres-des-differents-espaces-de-cooperation-territoriale-europeenne-re",
+      "review": {
+        "grade": "B",
+        "directions": [
+          "group",
+          "society"
+        ],
+        "suitability": "usable",
+        "overview": "该数据集记录参与欧洲领土合作空间及Interreg计划的行政区实体及其成员归属，覆盖2014—2020年和2021—2027年两个计划时期，但Hugging Face仓库本身为空，仅提供外部公开数据入口（card、metadata）。",
+        "application": "可从外部数据中提取“行政区实体—合作空间/Interreg计划”成员关系，构建二部图或多层合作网络，分析地区与部门之间的制度性合作结构、成员重叠及两个计划时期的空间覆盖差异；这是基于成员归属的网络研究建议，具体字段、时期标记和实体去重方式需在获取外部数据后核验。",
+        "reason": "卡片明确给出行政区实体、成员关系、合作空间、项目名称及计划时期，能够具体支撑行政主体合作网络的结构分析，因此与群体协作和制度/社区网络研究相关（card）。但现有材料未描述对话、协商、实际互动事件、决策结果或合作强度，成员共现也不能直接等同于实际交互，故评为B而非A；数据对象是行政区而非个人，不能直接支持个体偏好或心理研究。公开入口和无gated状态足以开展初步尝试（metadata、card）。",
+        "origin": {
+          "status": "known",
+          "value": "real",
+          "evidence": [
+            "card"
+          ]
+        },
+        "individual_id": {
+          "status": "known",
+          "value": "不适用于个人个体ID：数据对象是地区、部门等行政区实体及其合作空间成员关系，而非个人或用户行为记录；当前材料未说明实体主键字段。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "time_info": {
+          "status": "known",
+          "value": "卡片明确列出2014—2020年和2021—2027年两个Interreg计划时期；这些是项目周期，未见逐条事件时间戳或持续观测时间说明。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "labels": {
+          "status": "known",
+          "value": "合作空间及Interreg项目名称、计划时期可作为实体归属的分组标签；当前卡片未列出个人行为标签、观点标签或结果标签。",
+          "evidence": [
+            "card"
+          ]
+        },
+        "constraints": [
+          "Hugging Face仓库为空，实际分析需从卡片给出的外部公开入口取得数据（metadata、card）",
+          "仅明确描述行政区成员关系，未提供个人属性或用户行为（card）",
+          "未描述对话、协商、事件流、合作强度或决策结果（card）",
+          "时间信息仅明确到两个项目计划周期，不能直接用于事件级时序分析（card）",
+          "字段预览未取得，实际字段结构、实体标识和完整行覆盖仍需核验（metadata）"
+        ],
+        "evidence": [
+          "metadata",
+          "card"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/french-open-data/entites-administratives-membres-des-differents-espaces-de-cooperation-territoriale-europeenne-re",
+        "card": "https://huggingface.co/datasets/french-open-data/entites-administratives-membres-des-differents-espaces-de-cooperation-territoriale-europeenne-re/blob/main/README.md"
+      },
+      "coverage_notes": [
+        "字段预览未获取（可能需申请或不支持预览）；未确认的属性标为未知。"
+      ],
+      "papers": [],
+      "fingerprint": "344b0254123603b116d384545cbaf0ed2e0f1e84a9e7e1bab503a49844614308",
+      "url": "https://huggingface.co/datasets/french-open-data/entites-administratives-membres-des-differents-espaces-de-cooperation-territoriale-europeenne-re",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2025-11-22T09:41:51.000Z",
+      "license": "未知",
+      "gated": false
+    },
+    {
+      "id": "maxbennett/generalized-neural-memory-personamem",
+      "review": {
+        "grade": "B",
+        "directions": [
+          "individual"
+        ],
+        "suitability": "usable",
+        "overview": "GNM PersonaMem Benchmark 是从 PersonaMem-v2 衍生的多选题基准，用于评估神经记忆模型能否按自然语言指令选择性学习用户偏好（对指定主题学/不学），包含 train/Val-ID/Val-OOD 划分以及隐式/推断式指令变体。",
+        "application": "可用于个体层面的偏好建模与可控用户模拟研究：例如测试模型是否能在多主题偏好池中选择性记忆目标用户的偏好，或作为构建受控个体偏好表示/用户画像模块的训练与评测数据；也可用于研究指令引导下的选择性记忆机制本身是否可迁移到个性化对话或推荐中的用户偏好追踪。需验证：具体字段结构（persona/偏好/主题的映射方式）以及从该基准得出的'选择性偏好记忆'方法能否迁移到真实人机交互场景。",
+        "reason": "PersonaMem-v2 本质上是围绕个体（persona）多主题偏好的结构化数据，GNM PersonaMem 进一步加入了'被指令学习的主题 vs 不被指令学习的主题'的控制维度，直接对应个体偏好建模与选择性用户建模任务，符合 individual 方向。虽然原始论文侧重于评估记忆模型架构而非社会行为分析，但数据中编码的用户偏好结构可被迁移用于个体偏好学习、可控用户画像的研究。数据不是用于交互、群体或社会层级的分析，因此仅评 individual 方向为 B 级。不评 A 级是因为其核心设计目的是技术性记忆模型基准，而非直接服务个体行为/人格/认知研究，需要迁移与验证。",
+        "origin": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "individual_id": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "time_info": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "labels": {
+          "status": "known",
+          "value": "包含多选题答案标签、按主题分组的偏好标签（instructed topic vs non-instructed topic），以及 precomputed no-memory baseline letters（用于 collision filter）",
+          "evidence": [
+            "card"
+          ]
+        },
+        "constraints": [
+          "字段预览未获取，具体偏好/persona/主题的字段结构未知，需通过下载脚本获取后确认",
+          "设计目的是技术性记忆模型基准，向个体行为研究的迁移需要额外验证",
+          "PersonaMem-v2 的人设与偏好可能为合成而非真实人类行为数据",
+          "仅提供多选题格式，不含自由对话或交互轨迹",
+          "MIT 许可，gated=false，但需通过代码仓库的脚本下载（python scripts/download_data.py --personamem）"
+        ],
+        "evidence": [
+          "metadata",
+          "card",
+          "paper"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/maxbennett/generalized-neural-memory-personamem",
+        "card": "https://huggingface.co/datasets/maxbennett/generalized-neural-memory-personamem/blob/main/README.md",
+        "paper": "https://arxiv.org/abs/2602.23201"
+      },
+      "coverage_notes": [
+        "字段预览未获取（可能需申请或不支持预览）；未确认的属性标为未知。"
+      ],
+      "papers": [
+        "2602.23201"
+      ],
+      "fingerprint": "e8dd584fcd1050a916c57bad3b8a9bad78cafe69211762072a1a0785ebf4744e",
+      "url": "https://huggingface.co/datasets/maxbennett/generalized-neural-memory-personamem",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2026-10-15T05:25:29.000Z",
+      "license": "mit",
+      "gated": false
+    },
+    {
+      "id": "Den4ikAI/russian_dialogues",
+      "review": {
+        "grade": "B",
+        "directions": [
+          "interaction",
+          "individual"
+        ],
+        "suitability": "usable",
+        "overview": "从 Telegram 聊天中采集的俄语对话数据集，约 200 万条，以 question–answer–relevance 三字段存储（每条仅一条对话轮次），含通过打乱相似回复构造的负例。",
+        "application": "可用于俄语在线聊天中对话轮换模式、话题分布与回复相关性建模的研究；可作为对话代理/用户模拟器的训练语料，验证模拟交互是否复现真实俄语聊天的语言与主题模式；relevance 标签可用于研究'自然共现回复 vs 人工打乱回复'的区分特征，从而间接分析真实人际交互中的连贯性规范。",
+        "reason": "数据源自真实社交平台 Telegram 的聊天，对话内容本身保留自然语言交互特征，可支撑 interaction 方向上对话模式与交互规范的研究（B 级核心依据来自 metadata 与 card 中'Telegram чатов'的真实来源声明以及 fields/samples 中可见的对话文本）。relevance=1 对应真实相关回复、relevance=0 对应打乱负例（card 明确说明），可作为区分自然交互与扰动交互的标签用于交互建模。个体方向上虽无用户 ID，但可借助语言风格特征辅助用户模拟研究（fields 仅含 question/answer/relevance，无 ID 字段，故不能直接做个体追踪，只能用于模拟器训练）。该数据主要面向对话系统训练的技术任务（metadata 中 task_categories=conversational），作为社会行为研究的直接证据有限，因此不评 A。",
+        "origin": {
+          "status": "known",
+          "value": "mixed",
+          "evidence": [
+            "card"
+          ]
+        },
+        "individual_id": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "time_info": {
+          "status": "unknown",
+          "value": "unknown",
+          "evidence": []
+        },
+        "labels": {
+          "status": "known",
+          "value": "relevance 为整型标签（0/1），0 表示负例（通过打乱相似回复构造），1 表示正例（真实相关回复）",
+          "evidence": [
+            "card",
+            "fields",
+            "sample"
+          ]
+        },
+        "constraints": [
+          "无稳定个体标识，无法追踪同一用户多次发言",
+          "无时间戳字段，无法分析交互的时序演化",
+          "仅以单轮 question–answer 对存储，原始多轮上下文丢失",
+          "无人口学或社交网络元数据，群体/社会方向深度分析受限",
+          "约半数样本为人工打乱构造的合成负例，使用时需区分真实 vs 合成",
+          "仅覆盖俄语，对跨语言交互研究不具代表性"
+        ],
+        "evidence": [
+          "metadata",
+          "card",
+          "fields",
+          "sample"
+        ]
+      },
+      "source_links": {
+        "metadata": "https://huggingface.co/datasets/Den4ikAI/russian_dialogues",
+        "card": "https://huggingface.co/datasets/Den4ikAI/russian_dialogues/blob/main/README.md",
+        "fields": "https://huggingface.co/datasets/Den4ikAI/russian_dialogues",
+        "sample": "https://huggingface.co/datasets/Den4ikAI/russian_dialogues"
+      },
+      "coverage_notes": [],
+      "papers": [],
+      "fingerprint": "a5401197297c2a0d437387f8aea1b4930ce46adb5d26d913b1650b20271d3a7a",
+      "url": "https://huggingface.co/datasets/Den4ikAI/russian_dialogues",
+      "reason_type": "首次推荐（可为历史数据集）",
+      "last_modified": "2023-03-12T07:58:54.000Z",
+      "license": "mit",
+      "gated": false
+    }
+  ],
+  "candidate_count": 560,
+  "reviewed_this_run": 4,
+  "review_failures": 2,
+  "warnings": [],
+  "limits": {
+    "review": 20,
+    "recommend": 5
+  },
+  "model_calls": 9,
+  "cache_hits": 0,
+  "usage": {
+    "input_tokens": 39885,
+    "output_tokens": 43299,
+    "total_tokens": 83184
+  }
+}
